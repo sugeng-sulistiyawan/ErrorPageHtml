@@ -1,4 +1,4 @@
-#!/usr/bin/env php
+a#!/usr/bin/env php
 <?php
 
 /**
@@ -109,8 +109,11 @@ $errors = [
 ];
 
 $root     = dirname(__DIR__);
-$template = file_get_contents("template.html");
+$template = file_get_contents(__DIR__ . "/template.html");
 $readme   = "# Error Page Html\nSimple template Error Page Html with custom color css\n\n";
+$index    = [];
+
+$i = 0;
 foreach ($themeColors as $theme => $colors) {
     $fileCss = $root . "/assets/css/theme-{$theme}.css";
 
@@ -123,6 +126,7 @@ foreach ($themeColors as $theme => $colors) {
     file_put_contents("{$fileCss}", trim($content));
     echo "success\n";
 
+    $index[$i] = "<h4><strong>" . strtoupper(str_replace("-", " ", $theme)) . "</strong></h4>\n";
     foreach ($errors as $code => $title) {
         $fileHtml = "ErrorPage{$code}-{$theme}.html";
 
@@ -138,11 +142,23 @@ foreach ($themeColors as $theme => $colors) {
         echo "success\n";
 
         $readme .= "- [$fileHtml]($fileHtml)" . "\n";
+
+        $index[$i] .= "            <a href=\"{$fileHtml}\">{$fileHtml}</a><br>\n";
     }
 
     $readme .= "\n";
+
+    $i++;
 }
 
 echo "Create file: {$root}/README.md ...";
 file_put_contents("{$root}/README.md", trim($readme));
 echo "success\n";
+
+$content = file_get_contents(__DIR__ . "/index.html");
+$content = str_replace('{{content}}', implode("\n            <br><hr><br>\n            ", $index), $content);
+
+echo "Create file: {$root}/index.html ...";
+file_put_contents("{$root}/index.html", trim($content));
+echo "success\n";
+
