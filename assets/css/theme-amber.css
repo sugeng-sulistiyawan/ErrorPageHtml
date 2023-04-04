@@ -1,0 +1,28 @@
+/*
+ * @date:   2017-06-14 16:49:39
+ *
+ * @link [sugeng-sulistiyawan.github.io](sugeng-sulistiyawan.github.io)
+ * @author sugeng sulistiyawan <sugeng.sulistiyawan@gmail.com>
+ * @copyright copyright (c) 2023
+ */
+
+html, body {
+    color: #fff;
+    background-color: #ffb300;
+}
+
+a, a:hover {
+    color: #fff;
+}
+
+.header {
+    background-color: #ffa000;
+}
+
+.btn-back {
+    background-color: #ff6f00;
+}
+
+.btn-back:hover {
+    background-color: #e56300;
+}
