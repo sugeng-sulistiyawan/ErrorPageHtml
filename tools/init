@@ -151,9 +151,9 @@ foreach ($themeColors as $theme => $colors) {
     $i++;
 }
 
-echo "Create file: {$root}/README.md ...";
-file_put_contents("{$root}/README.md", trim($readme));
-echo "success\n";
+// echo "Create file: {$root}/README.md ...";
+// file_put_contents("{$root}/README.md", trim($readme));
+// echo "success\n";
 
 $content = file_get_contents(__DIR__ . "/index.html");
 $content = str_replace('{{content}}', implode("\n            <br><hr><br>\n            ", $index), $content);
