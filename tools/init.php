@@ -126,7 +126,15 @@ foreach ($themeColors as $theme => $colors) {
     file_put_contents("{$fileCss}", trim($content));
     echo "success\n";
 
-    $index[$i] = "<h4><strong>" . strtoupper(str_replace("-", " ", $theme)) . "</strong></h4>\n";
+    $title = strtoupper(str_replace("-", " ", $theme));
+    $index[$i] = <<< HTML
+<div class="card text-white bg-{$theme} border-0 my-5">
+                <div class="card-body">
+                    <h5 class="card-title"><strong>{$title}</strong></h5>
+                    <ul>
+
+HTML;
+
     foreach ($errors as $code => $title) {
         $fileHtml = "ErrorPage{$code}-{$theme}.html";
 
@@ -141,22 +149,22 @@ foreach ($themeColors as $theme => $colors) {
         file_put_contents("{$root}/{$fileHtml}", trim($content));
         echo "success\n";
 
-        $readme .= "- [$fileHtml]($fileHtml)" . "\n";
-
-        $index[$i] .= "            <a href=\"{$fileHtml}\">{$fileHtml}</a><br>\n";
+        $index[$i] .= "                        <li><a href=\"{$fileHtml}\" class=\"btn btn-link\">{$fileHtml}</a></li>\n";
     }
+
+    $index[$i] .= <<< HTML
+                    </ul>
+                </div>
+            </div>
+HTML;
 
     $readme .= "\n";
 
     $i++;
 }
 
-// echo "Create file: {$root}/README.md ...";
-// file_put_contents("{$root}/README.md", trim($readme));
-// echo "success\n";
-
 $content = file_get_contents(__DIR__ . "/index.html");
-$content = str_replace('{{content}}', implode("\n            <br><hr><br>\n            ", $index), $content);
+$content = str_replace('{{content}}', implode("\n\n            ", $index), $content);
 
 echo "Create file: {$root}/index.html ...";
 file_put_contents("{$root}/index.html", trim($content));

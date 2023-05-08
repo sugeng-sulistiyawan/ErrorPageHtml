@@ -1,0 +1,55 @@
+/*
+ * Home Style
+ *
+ * @link [sugeng-sulistiyawan.github.io](sugeng-sulistiyawan.github.io)
+ * @author Sugeng Sulistiyawan <sugeng.sulistiyawan@gmail.com>
+ * @copyright Copyright (c) 2023
+ */
+
+* {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+}
+
+.card * {
+    color: #fff !important;
+}
+
+.bg-default {
+    background-color: #1976d2 !important;
+}
+
+.bg-amber {
+    background-color: #ffb300 !important;
+}
+
+.bg-deep-purple {
+    background-color: #5e35b1 !important;
+}
+
+.bg-green {
+    background-color: #43a047 !important;
+}
+
+.bg-grey {
+    background-color: #546e7a !important;
+}
+
+.bg-indigo {
+    background-color: #3949ab !important;
+}
+
+.bg-pink {
+    background-color: #d81b60 !important;
+}
+
+.bg-purple {
+    background-color: #8e24aa !important;
+}
+
+.bg-red {
+    background-color: #e53935 !important;
+}
+
+.bg-teal {
+    background-color: #00897b !important;
+}
